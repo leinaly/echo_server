@@ -1,0 +1,127 @@
+{
+  "info": {
+    "_postman_id": "7e65460e-3156-4ff8-a1f1-50a7f2e8f948",
+    "name": "Echo Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List All Endpoints",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/endpoints",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "endpoints"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Endpoint",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": {\n    \"type\": \"endpoints\",\n    \"attributes\": {\n      \"verb\": \"GET\",\n      \"path\": \"/test\",\n      \"response\": {\n        \"code\": 200,\n        \"headers\": {\n          \"Content-Type\": \"application/json\"\n        },\n        \"body\": \"{ \\\"message\\\": \\\"Hello, world!\\\" }\"\n      }\n    }\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/endpoints",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "endpoints"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Endpoint",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": {\n    \"type\": \"endpoints\",\n    \"id\": \"12345\",\n    \"attributes\": {\n      \"verb\": \"POST\",\n      \"path\": \"/test\",\n      \"response\": {\n        \"code\": 201,\n        \"headers\": {\n          \"Content-Type\": \"application/json\"\n        },\n        \"body\": \"{ \\\"message\\\": \\\"Hello, everyone!\\\" }\"\n      }\n    }\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/endpoints/:id",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "endpoints",
+            ":id"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Endpoint",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/endpoints/:id",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "endpoints",
+            ":id"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api"
+    },
+    {
+      "key": "authToken",
+      "value": "your_api_token"
+    }
+  ]
+}

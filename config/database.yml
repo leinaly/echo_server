@@ -1,0 +1,22 @@
+# config/database.yml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password:
+  host: localhost
+
+development:
+  <<: *default
+  database: echo_server_development
+
+test:
+  <<: *default
+  database: echo_server_test
+
+production:
+  <<: *default
+  database: echo_server_production
+  username: echo_server
+  password: <%= ENV['ECHO_SERVER_DATABASE_PASSWORD'] %>
